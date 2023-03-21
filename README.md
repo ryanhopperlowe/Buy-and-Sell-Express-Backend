@@ -22,6 +22,8 @@ This is a full stack listing application.
 All operations require authentication through firebase auth (Google login enabled) and user identity is verified against auth token, so no user can modify another user's data.
 
 ### Future Plans
+- Reimplement all apis in express
+- Improve/implement routing system for serving static HTML
 - Differentiate between production and local environments
 - Implement profile functionality
   - Email auth
