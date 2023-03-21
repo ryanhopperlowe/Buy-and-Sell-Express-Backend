@@ -25,8 +25,12 @@ All operations require authentication through firebase auth (Google login enable
 - Reimplement all apis in express
 - Improve/implement routing system for serving static HTML
 - Differentiate between production and local environments
+- Implement packaging so building, running, and deploying colocated UI and backend can be done in a single command
 - Implement profile functionality
   - Email auth
   - Profile pictures/settings
 - Implement in-app chat feature between users
 - Reimplement DB using PostgreSQL
+
+#### UI Updates
+- Improve navbar to contain login/logout buttons
