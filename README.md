@@ -22,9 +22,9 @@ This is a full stack listing application.
 All operations require authentication through firebase auth (Google login enabled) and user identity is verified against auth token, so no user can modify another user's data.
 
 ### Future Plans
+- Differentiate between production and local environments
 - Implement profile functionality
   - Email auth
   - Profile pictures/settings
 - Implement in-app chat feature between users
-- Reimplement backend using Express
 - Reimplement DB using PostgreSQL
