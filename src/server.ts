@@ -3,15 +3,15 @@ dotenv.config({ path: `.env.${process.env.APP_ENV}` });
 import express from "express";
 import { Server } from 'http';
 import { listingsRouter } from "./routes/listings";
-import { db } from "./database";
+import { RootService } from './service';
 
 let server: Server;
 
-function run() {
+async function run() {
   const app = express();
   const port = 8080;
 
-  db.connect();
+  await RootService.instance.init();
 
   app.use(listingsRouter)
 
@@ -26,14 +26,14 @@ function run() {
 
 process.on('unhandledRejection', (error) => {
   console.log(error);
-  db.end();
+  RootService.instance.end();
   process.exit(1);
 })
 
 process.on('SIGINT', async () => {
   console.log('Stopping Server...');
   await server.close(() => {
-    db.end();
+    RootService.instance.end();
     console.log('Server Stopped');
     process.exit(0);
   });

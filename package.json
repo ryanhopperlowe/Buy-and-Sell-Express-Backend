@@ -2,9 +2,9 @@
   "name": "buy-and-sell-express",
   "version": "1.0.0",
   "description": "Express server for buy-and-sell application",
-  "main": "dist/index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "dev": "APP_ENV=development nodemon src/index.ts",
+    "dev": "APP_ENV=development nodemon src/server.ts",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
