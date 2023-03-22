@@ -1,5 +1,5 @@
 node_modules
-.env
+.env*
 app.yaml
 dist
 firebase-credentials.json

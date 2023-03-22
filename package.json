@@ -4,11 +4,11 @@
   "description": "Express server for buy-and-sell application",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "APP_ENV=development nodemon src/index.ts",
     "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
     "prestart": "npm run build",
-    "start": "node .",
+    "start": "APP_ENV=production node .",
     "test": "test"
   },
   "author": "Ryan Hopper-Lowe",

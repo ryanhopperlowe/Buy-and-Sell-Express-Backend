@@ -1,7 +1,7 @@
+import dotenv from 'dotenv';
+dotenv.config({ path: `.env.${process.env.APP_ENV}` });
 import express from "express";
 import { Server } from 'http';
-import dotenv from 'dotenv';
-dotenv.config();
 import { listingsRouter } from "./routes/listings";
 import { db } from "./database";
 
