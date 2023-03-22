@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config({ path: `.env.${process.env.APP_ENV}` });
 import express from "express";
 import { Server } from 'http';
-import { listingsRouter } from "./routes/listings";
+import { listingsRouter } from "./routes/listingRouter";
 import { RootService } from './service';
 
 let server: Server;
