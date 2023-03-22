@@ -11,4 +11,17 @@ listingsRouter.get('/api/listings', async (req, res) => {
   res.send(listings);
 });
 
+listingsRouter.get('/api/listings/:id', async (req, res) => {
+  const { id } = req.params;
+  const listing = await service.fetchListing(id);
+  res.send(listing);
+});
+
+listingsRouter.post('/api/listings/:id/add-view', async (req, res) => {
+  const { id } = req.params;
+  const response = await service.addViewToListing(id);
+
+  res.send(response);
+})
+
 export { listingsRouter };
