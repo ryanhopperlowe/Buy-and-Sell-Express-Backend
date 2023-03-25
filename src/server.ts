@@ -1,9 +1,15 @@
 import dotenv from 'dotenv';
 dotenv.config({ path: `.env.${process.env.APP_ENV}` });
 import express from "express";
+import admin, { ServiceAccount } from 'firebase-admin';
 import { Server } from 'http';
 import { listingsRouter } from "./routes/listingRouter";
 import { RootService } from './service';
+import * as credentials from '../firebase-credentials.json';
+
+admin.initializeApp({
+  credential: admin.credential.cert(credentials as ServiceAccount)
+})
 
 let server: Server;
 
