@@ -8,7 +8,7 @@ const service = new ListingService(RootService.instance);
 const listingsRouter = Router();
 
 listingsRouter.use(express.json());
-listingsRouter.use(express.urlencoded());
+listingsRouter.use(express.urlencoded({ extended: true }));
 
 listingsRouter.get('/api/listings', async (req, res) => {
   const listings = await service.fetchAllListings();
@@ -25,7 +25,7 @@ listingsRouter.get('/api/listings/:id', async (req, res) => {
 listingsRouter.post('/api/listings/:id/add-view', async (req, res) => {
   const { id } = req.params;
   console.log(req.headers);
-  
+
   const response = await service.addViewToListing(id);
 
   res.send(response);
@@ -46,7 +46,7 @@ listingsRouter.post('/api/listings/:id', async (req, res) => {
   const { userId } = await verifyUser(authorization);
 
   console.log(req.body);
-  
+
 
   await service.updateListing(id, userId, req.body)
   const listing = await service.fetchListing(id);
@@ -60,7 +60,7 @@ listingsRouter.post('/api/listings', async (req, res) => {
 
     await service.createListing(id, userId, req.body);
     const listing = await service.fetchListing(id);
-    
+
     res.send(listing);
 });
 

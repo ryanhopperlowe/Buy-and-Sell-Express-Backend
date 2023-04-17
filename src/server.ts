@@ -1,11 +1,13 @@
 import dotenv from 'dotenv';
 dotenv.config({ path: `.env.${process.env.APP_ENV}` });
+
 import express from "express";
 import admin, { ServiceAccount } from 'firebase-admin';
 import { Server } from 'http';
 import { listingsRouter } from "./routes/listingRouter";
 import { RootService } from './service';
 import * as credentials from '../firebase-credentials.json';
+import path from 'path';
 
 admin.initializeApp({
   credential: admin.credential.cert(credentials as ServiceAccount)
@@ -19,11 +21,14 @@ async function run() {
 
   await RootService.instance.init();
 
-  app.use(listingsRouter)
-
-  app.get('/', (req, res) => {
-    res.end('Hello World!');
-  });
+  app.use(listingsRouter);
+  
+  if (process.env.APP_ENV === 'production') {
+    app.use(express.static(path.resolve(__dirname, '../frontend/buy-and-sell')));
+    app.get('/*', (_, res) => {
+      res.sendFile(path.resolve(__dirname, '../frontend/buy-and-sell/index.html'));
+    });
+  }
 
   server = app.listen(port, () => {
     console.log(`App listening on localhost:${port}`)

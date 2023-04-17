@@ -16,7 +16,7 @@ export class ListingService {
   }
 
   async fetchListing(id: string) {
-    this.log('fetchListings');
+    this.log('fetchListing');
     const { results } = await this.root.query<unknown[]>(
       'SELECT * FROM listings WHERE id=?',
       [id]
